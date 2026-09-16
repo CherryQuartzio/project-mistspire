@@ -36,7 +36,7 @@ Debug console cheat sheet: [docs/gameplay/IMMERSION.md](docs/gameplay/IMMERSION.
 ## Repository layout
 
 ```
-deepiri-mistspire/
+project-mistspire/
 ├── game/                         # UE 5.8 project (Mistspire.uproject)
 │   ├── Source/Mistspire/         # Game module: pawn, altitude, summits
 │   ├── Content/Maps/             # Main_WP (Git LFS)
@@ -61,6 +61,12 @@ deepiri-mistspire/
 ## WSL
 
 Fine for editing and `xr-sandbox` builds. **Not** for USB headset VR — use native Linux or Windows for playtests.
+
+## History & Earlier Involvement
+
+Project Mistspire was originally conceived, developed, and incubated under **Team Deepiri** (as `Team-Deepiri/deepiri-mistspire`). The foundational architectural groundwork, OpenXR runtime bridges, and initial vertical exploration gameplay were established during that period. As such, historical commit logs, early configuration files, and license headers throughout this repository reference Team Deepiri.
+
+Following the departure from the upstream organization, the project is now independently continued, published, and maintained by [@CherryQuartzio](https://github.com/CherryQuartzio) at [CherryQuartzio/project-mistspire](https://github.com/CherryQuartzio/project-mistspire). We gratefully acknowledge Team Deepiri and its past contributors for their role in the project's inception and early milestones.
 
 ## License
 
