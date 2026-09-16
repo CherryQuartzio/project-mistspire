@@ -103,7 +103,7 @@ Bindings include: `move`, `strafe`, `turn`, `grip`, `jump`, `climb`, `grapple`, 
 - `mistspire.AIThink` / `mistspire.GOAPPlan <goal>`
 - `mistspire.SpawnGhostSim` / `mistspire.StateMachineDebug`
 - `mistspire.ObservationStart [intervalS]` / `mistspire.ObservationStop`
-- `mistspire.DemoMode 1` / CLI `-demoworld` — HUD + welcome dialogue + wandering ghosts + Demo Spire scaffold
+- `mistspire.DemoMode 1` (enabled by default; `-nodemo` to disable) — HUD + welcome dialogue + wandering ghosts + Demo Spire scaffold
 - `mistspire.DemoTour 0`…`9` — teleport biome mid-bands with forced visuals
 - `mistspire.ApplyDemoPresentation` — re-run demo presentation
 - `mistspire.RebuildDemoScaffold` — spawn/rebuild Demo Spire geometry + immersion props

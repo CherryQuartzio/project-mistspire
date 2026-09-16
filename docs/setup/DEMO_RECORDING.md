@@ -15,18 +15,19 @@ Owner-facing sequence for Mistspire demo presentation (Demo Spire + Fab env dres
 .\setup.ps1 -NonInteractive   # first time / deps
 .\run.ps1                     # editor
 .\run-nonvr.ps1               # editor + -nonvr
-.\scripts\launch_packaged_win64.ps1   # packaged non-VR (-demoworld)
+.\scripts\package_win64.ps1           # package Win64 standalone build
+.\scripts\launch_packaged_win64.ps1   # packaged non-VR (demo enabled by default)
 ```
 
 Demo presentation on launch:
+Demo mode is now **enabled by default** in both editor PIE and packaged standalone builds (use `-nodemo` or `mistspire.DemoMode 0` to disable).
 
-```text
-.\run-nonvr.ps1
-# or add to editor cmdline / packaged args:
--demoworld
+```powershell
+.\run-nonvr.ps1                       # editor + non-VR (demo on)
+.\scripts\launch_packaged_win64.ps1   # packaged (demo on)
 ```
 
-Or in console after PIE: `mistspire.DemoMode 1` (seeds Mist Inn doors + scaffold if StartPlay ran without `-demoworld`) then `mistspire.ApplyDemoPresentation` if you only need the HUD/ghost beat again.
+Console toggles: `mistspire.DemoMode 1` / `0`, `mistspire.ApplyDemoPresentation` to re-trigger the HUD/ghost presentation beat.
 
 ## Recording sequence
 

@@ -11,8 +11,9 @@ if (-not $PackageRoot) {
 }
 
 $ExeCandidates = @(
-    (Join-Path $PackageRoot "Mistspire\Binaries\Win64\Mistspire.exe"),
+    (Join-Path $PackageRoot "Windows\Mistspire.exe"),
     (Join-Path $PackageRoot "Windows\Mistspire\Binaries\Win64\Mistspire.exe"),
+    (Join-Path $PackageRoot "Mistspire\Binaries\Win64\Mistspire.exe"),
     (Join-Path $PackageRoot "Mistspire.exe")
 )
 

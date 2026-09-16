@@ -100,7 +100,13 @@ Non-VR walking uses step-up and wall-slide on uneven collision (rocks/debris), s
 
 ## Packaging
 
-Cook and package (run from repo root, adjust `UE_ROOT`):
+Use the automated packaging script (automatically detects UE 5.8 and cooks `Main_WP`):
+
+```powershell
+.\scripts\package_win64.ps1
+```
+
+Or manually via RunUAT (adjust `UE_ROOT`):
 
 ```powershell
 $UAT = "$env:UE_ROOT\Engine\Build\BatchFiles\RunUAT.bat"
@@ -108,6 +114,7 @@ $UAT = "$env:UE_ROOT\Engine\Build\BatchFiles\RunUAT.bat"
   -project="game\Mistspire.uproject" `
   -platform=Win64 `
   -clientconfig=Development `
+  -map=/Game/Maps/Main_WP `
   -build -cook -stage -pak -archive `
   -archivedirectory="game\Package\Win64"
 ```
