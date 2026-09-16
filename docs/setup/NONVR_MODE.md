@@ -50,9 +50,11 @@ See [Packaging](#packaging) below for cook commands.
 
 Bindings are created in C++ (`FMistspireInputMode::CreateNonVREnhancedInput`) — there are no Content Input Action assets. `DefaultInput.ini` uses `EnhancedPlayerInput` / `EnhancedInputComponent`.
 
-Esc opens a Slate settings overlay (soft-pause: cursor on, gameplay input ignored). Values persist via `UMistspireGameUserSettings`. The on-screen keyboard controls line is **off by default**; enable it under **Show keyboard controls** in settings (or `mistspire.ShowControls 1` to force on).
+Esc opens a Slate settings overlay (soft-pause: cursor on, gameplay input ignored). Sections: **Display** (fullscreen, FOV), **Controls** (sensitivity, invert Y, view bob + intensity, keyboard controls hint), **Audio** (master, SFX), **Gameplay** (altitude HUD, auto-glider on grapple release), plus Reset / Resume / Quit (packaged). Values persist via `UMistspireGameUserSettings`. Esc also opens settings from the title screen. The on-screen keyboard controls line is **off by default**; enable it under **Show keyboard controls** (or `mistspire.ShowControls 1` to force on).
 
-A white **+** crosshair is drawn at screen center (`AMistspireHUD`) for grapple aim. The cable tip extends to the hit before pull starts; press F / RMB again to cancel while extending or reeling. The far end stays locked to the world hit (it does not follow look).
+Title screen (`SMistspireTitlePanel`) shows **Project Mistspire** / Demo with **Start / Settings / Credits / Quit** buttons — press any key (or click Start) to begin. Esc or **Settings** opens the same overlay described above without leaving the title screen.
+
+A white **+** crosshair is drawn at screen center (`AMistspireHUD`) for grapple aim. The cable tip extends to the hit, then you swing/reel in with velocity (WASD steers on the cable). **Hold** F / RMB while attached to reel faster; press again to release and carry momentum into fall or auto-glide. The anchor stays locked to the world hit (it does not follow look).
 
 ## Console
 
@@ -63,7 +65,12 @@ mistspire.TeleportUp 5000
 mistspire.AltitudeStats
 mistspire.RefillSurvival
 mistspire.ToggleSettings
+mistspire.DemoMode 1
+mistspire.DemoTour 0
+mistspire.ApplyDemoPresentation
 ```
+
+Full owner recording sequence: [DEMO_RECORDING.md](DEMO_RECORDING.md).
 
 In the editor, **Esc stops PIE**. Use `mistspire.ToggleSettings` (tilde console) to open/close the settings menu instead. Packaged builds still use Esc.
 ## Troubleshooting input
@@ -93,7 +100,13 @@ Non-VR walking uses step-up and wall-slide on uneven collision (rocks/debris), s
 
 ## Packaging
 
-Cook and package (run from repo root, adjust `UE_ROOT`):
+Use the automated packaging script (automatically detects UE 5.8 and cooks `Main_WP`):
+
+```powershell
+.\scripts\package_win64.ps1
+```
+
+Or manually via RunUAT (adjust `UE_ROOT`):
 
 ```powershell
 $UAT = "$env:UE_ROOT\Engine\Build\BatchFiles\RunUAT.bat"
@@ -101,6 +114,7 @@ $UAT = "$env:UE_ROOT\Engine\Build\BatchFiles\RunUAT.bat"
   -project="game\Mistspire.uproject" `
   -platform=Win64 `
   -clientconfig=Development `
+  -map=/Game/Maps/Main_WP `
   -build -cook -stage -pak -archive `
   -archivedirectory="game\Package\Win64"
 ```

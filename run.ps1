@@ -42,9 +42,10 @@ if ($Mode -eq "editor") {
   & $UEEditor $UProject
 } elseif ($Mode -eq "packaged") {
   $packageCandidates = @(
-    (Join-Path $Root "game\Package\Win64\Mistspire.exe"),
+    (Join-Path $Root "game\Package\Win64\Windows\Mistspire.exe"),
+    (Join-Path $Root "game\Package\Win64\Windows\Mistspire\Binaries\Win64\Mistspire.exe"),
     (Join-Path $Root "game\Package\Win64\Mistspire\Binaries\Win64\Mistspire.exe"),
-    (Join-Path $Root "game\Package\Win64\Windows\Mistspire\Binaries\Win64\Mistspire.exe")
+    (Join-Path $Root "game\Package\Win64\Mistspire.exe")
   )
   $exe = $null
   foreach ($p in $packageCandidates) {
@@ -56,7 +57,7 @@ if ($Mode -eq "editor") {
     & $exe -nonvr
   } else {
     Write-Host "!! No Win64 package found under game\Package\Win64"
-    Write-Host "   Package first — see scripts\package_win64.sh and tools\pipeline\step_17_README.md"
+    Write-Host "   Package first — run: powershell -File scripts\package_win64.ps1"
     exit 1
   }
 }
